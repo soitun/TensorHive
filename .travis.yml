@@ -9,5 +9,7 @@ install:
   - pip install -r requirements-dev.txt
 before_script:
   - python -m flake8 tensorhive
+  # Generate documentation
+  - PYTHONPATH=. pdoc --html tensorhive.core --only-pypath --overwrite --html-dir docs/ && mv docs/tensorhive/core/* docs/
 script:
   - pytest
